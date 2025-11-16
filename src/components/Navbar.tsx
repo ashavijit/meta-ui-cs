@@ -46,7 +46,7 @@ const Navbar = () => {
       } border rounded-2xl px-4 py-3 max-w-5xl w-[calc(100%-2rem)]`}
     >
       <div className="flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
+        <Link to="/" className="flex items-center">
           <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
             meta-lang
           </span>

@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Github, Mail, Twitter, ChevronRight, Send, Sparkles, Shield, Zap, Code } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
-import SyntaxHighlightedCode from "@/components/SyntaxHighlightedCode";
 import FeatureCard from "@/components/FeatureCard";
 
 const Index = () => {
   const [email, setEmail] = useState("");
+  const [currentCommand, setCurrentCommand] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [showOutput, setShowOutput] = useState(false);
+  const [outputLines, setOutputLines] = useState<string[]>([]);
 
   const handleNotify = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,142 +26,95 @@ const Index = () => {
     }
   };
 
-  const sampleCode = `# ===============================
-# Meta Configuration File
-# Production-ready replacement for .env files
-# ===============================
+  // CLI commands and their outputs
+  const cliCommands = [
+    { 
+      command: "meta init", 
+      output: [
+        "Initializing Meta-Lang project...",
+        "Creating app.config.meta...",
+        "Creating .meta/ directory...",
+        "Installing meta-lang SDK...",
+        "Project initialized successfully!",
+        ""
+      ]
+    },
+    { 
+      command: "meta validate app.config.meta", 
+      output: [
+        "Validating configuration...",
+        "Checking syntax... ✓",
+        "Validating types... ✓",
+        "Checking environments... ✓",
+        "Validation successful!",
+        ""
+      ]
+    },
+    { 
+      command: "meta build --env prod", 
+      output: [
+        "Building for production...",
+        "Loading configuration...",
+        "Compiling assets...",
+        "Optimizing bundle...",
+        "Build completed in 2.4s",
+        ""
+      ]
+    },
+    { 
+      command: "meta deploy --target staging", 
+      output: [
+        "Deploying to staging...",
+        "Connecting to staging server...",
+        "Uploading configuration...",
+        "Restarting services...",
+        "Deployment successful!",
+        "View at: https://staging.myapp.com",
+        ""
+      ]
+    }
+  ];
 
-# Common settings (shared across all environments)
-@common
-@v 1.0.0
-app_name:string MyApp
-version:float 1.0.0
-description:string A production-ready Node.js application
+  // Effect for CLI animation
+  useEffect(() => {
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const pauseTime = 1500;
 
-# Application settings
-@common
-debug:bool false
-log_level:string info
-timeout:int 30
+    const handleTyping = () => {
+      const currentCmd = cliCommands[currentCommand];
+      
+      if (!isDeleting && !showOutput) {
+        // Typing the command
+        if (displayedText.length < currentCmd.command.length) {
+          setDisplayedText(currentCmd.command.substring(0, displayedText.length + 1));
+        } else {
+          // Finished typing, pause before showing output
+          setTimeout(() => {
+            setShowOutput(true);
+            setOutputLines(currentCmd.output);
+          }, pauseTime);
+        }
+      } else if (showOutput) {
+        // Showing output, pause before deleting
+        setTimeout(() => setIsDeleting(true), pauseTime * 2);
+      } else if (isDeleting) {
+        // Deleting the command and output
+        if (displayedText.length > 0) {
+          setDisplayedText(displayedText.substring(0, displayedText.length - 1));
+        } else {
+          // Finished deleting, move to next command
+          setIsDeleting(false);
+          setShowOutput(false);
+          setOutputLines([]);
+          setCurrentCommand((prev) => (prev + 1) % cliCommands.length);
+        }
+      }
+    };
 
-# Database configuration (common)
-@common
-database_driver:string postgresql
-database_pool_min:int 2
-database_pool_max:int 10
-
-# Cache configuration (common)
-@common
-cache_ttl:int 3600
-cache_prefix:string app
-
-# ===============================
-# Development Environment
-# ===============================
-
-@env dev
-debug:bool true
-log_level:string debug
-port:int 3000
-host:string localhost
-
-# Development database
-@env dev
-database_host:string localhost
-database_port:int 5432
-database_name:string myapp_dev
-database_user:string dev_user
-database_password:env $ENV(DB_PASS_DEV, "dev_password")
-database_ssl:bool false
-
-# Development cache
-@env dev
-cache_enabled:bool true
-cache_host:string localhost
-cache_port:int 6379
-cache_password:env $ENV(REDIS_PASS_DEV, "")
-
-# ===============================
-# Staging Environment
-# ===============================
-
-@env staging
-debug:bool false
-log_level:string info
-port:int 3000
-host:string staging.myapp.com
-
-# Staging database
-@env staging
-database_host:string staging.db.myapp.com
-database_port:int 5432
-database_name:string myapp_staging
-database_user:string staging_user
-database_password:env $ENV(DB_PASS_STAGING)
-database_ssl:bool true
-
-# Staging cache
-@env staging
-cache_enabled:bool true
-cache_host:string cache.staging.myapp.com
-cache_port:int 6380
-cache_password:env $ENV(REDIS_PASS_STAGING)
-
-# ===============================
-# Production Environment
-# ===============================
-
-@env prod
-debug:bool false
-log_level:string warn
-port:int 8080
-host:string api.myapp.com
-
-# Production database
-@env prod
-database_host:string prod.db.myapp.com
-database_port:int 5432
-database_name:string myapp_prod
-database_user:env $ENV(DB_USER_PROD)
-database_password:env $ENV(DB_PASS_PROD)
-database_ssl:bool true
-
-# Production cache
-@env prod
-cache_enabled:bool true
-cache_host:string cache.prod.myapp.com
-cache_port:int 6379
-cache_password:env $ENV(REDIS_PASS_PROD)
-
-# ===============================
-# Feature Flags
-# ===============================
-
-@features
-auth_enabled:bool true
-analytics_enabled:bool false
-metrics_enabled:bool true
-rate_limiting:bool true
-
-# ===============================
-# API Configuration
-# ===============================
-
-@api
-base_url:string https://api.myapp.com
-api_version:string v1
-rate_limit:int 100
-timeout:int 5000
-
-# ===============================
-# External Services
-# ===============================
-
-@services
-email_service:bool true
-sms_service:bool false
-payment_gateway:string stripe
-payment_api_key:env $ENV(STRIPE_API_KEY)`;
+    const timer = setTimeout(handleTyping, isDeleting ? deletingSpeed : typingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, showOutput, currentCommand, cliCommands]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -208,12 +165,33 @@ payment_api_key:env $ENV(STRIPE_API_KEY)`;
             </a>
           </div>
 
-          <div className="slide-up max-h-[600px] overflow-y-auto rounded-xl border border-border shadow-2xl">
-            <SyntaxHighlightedCode code={sampleCode} />
+          {/* CLI Animation with Full Output */}
+          <div className="slide-up max-w-2xl mx-auto mb-16">
+            <div className="bg-card border border-border rounded-xl p-6 shadow-2xl">
+              <div className="flex items-center mb-4">
+                <div className="flex space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div className="text-sm text-muted-foreground ml-2">terminal</div>
+              </div>
+              <div className="font-mono text-left">
+                <div className="text-muted-foreground">$ <span className="text-foreground">{displayedText}</span><span className="ml-1 inline-block w-2 h-5 bg-foreground animate-pulse"></span></div>
+                {showOutput && outputLines.map((line, index) => (
+                  <div key={index} className={`mt-1 ${line.includes("✓") ? "text-green-500" : line.includes("https://") ? "text-blue-500 underline" : "text-foreground"}`}>
+                    {line}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <p className="text-sm text-muted-foreground mt-4">
-            Full example: Multi-environment configuration with type safety and environment variable injection
-          </p>
+
+          <div className="slide-up max-w-2xl mx-auto">
+            <p className="text-sm text-muted-foreground">
+              CLI tools for validation, building, and deployment
+            </p>
+          </div>
         </div>
       </section>
 
