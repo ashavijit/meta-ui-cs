@@ -13,7 +13,7 @@ const FeatureCard = ({
 }: FeatureCardProps) => {
   return (
     <div
-      className={`bg-card border border-border rounded-xl p-6 hover:border-accent/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${className}`}
+      className={`bg-card border border-border rounded-2xl p-6 hover:border-accent/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${className}`}
     >
       {icon && <div className="mb-4 text-foreground/80">{icon}</div>}
       <h3 className="text-xl font-bold mb-3">{title}</h3>

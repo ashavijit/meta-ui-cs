@@ -172,7 +172,7 @@ const SyntaxHighlightedCode = ({ code, className = "", lintErrors = [] }: Syntax
 
   return (
     <div
-      className={`bg-card border border-border rounded-lg p-6 font-mono text-sm overflow-x-auto transition-all duration-500 relative ${
+      className={`bg-card border border-border rounded-xl p-6 font-mono text-sm overflow-x-auto transition-all duration-500 relative ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       } ${className}`}
     >

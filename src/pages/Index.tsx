@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Github, Mail, Twitter, ChevronRight, Send } from "lucide-react";
+import { Github, Mail, Twitter, ChevronRight, Send, Sparkles, Shield, Zap, Code } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
@@ -164,15 +165,19 @@ payment_api_key:env $ENV(STRIPE_API_KEY)`;
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <div className="fade-in">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+            <div className="inline-flex items-center justify-center px-4 py-1 text-sm bg-card border border-border rounded-full mb-6">
+              <Sparkles className="h-4 w-4 mr-2 text-accent" />
+              <span className="text-foreground">Coming Soon</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
               meta-lang
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-4">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto">
               A new configuration standard is coming.
             </p>
-            <p className="text-lg text-muted-foreground mb-12">
+            <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
               Human-first. Typed. Immutable. Versioned.
             </p>
           </div>
@@ -203,7 +208,7 @@ payment_api_key:env $ENV(STRIPE_API_KEY)`;
             </a>
           </div>
 
-          <div className="slide-up max-h-[600px] overflow-y-auto">
+          <div className="slide-up max-h-[600px] overflow-y-auto rounded-xl border border-border shadow-2xl">
             <SyntaxHighlightedCode code={sampleCode} />
           </div>
           <p className="text-sm text-muted-foreground mt-4">
@@ -213,36 +218,42 @@ payment_api_key:env $ENV(STRIPE_API_KEY)`;
       </section>
 
       {/* Key Highlights */}
-      <section className="py-20 px-6 border-t border-border">
+      <section className="py-20 px-6 border-t border-border bg-gradient-to-b from-background to-card">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Why Meta-Lang?
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Why Developers Love Meta-Lang
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Built for modern applications with developer experience in mind
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
             <FeatureCard
               title="Human-friendly Syntax"
               description="Write configs that read like documentation. No more cryptic YAML or verbose JSON."
               icon={
-                <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
-                  <span className="text-2xl">📝</span>
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
+                  <Code className="h-6 w-6 text-foreground" />
                 </div>
               }
             />
             <FeatureCard
-              title="Built-in Version Control"
-              description="Track every change with automatic versioning. Time-travel through your configuration history."
+              title="Built-in Type Safety"
+              description="Catch configuration errors at compile time with built-in type checking."
               icon={
-                <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
-                  <span className="text-2xl">🔄</span>
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-foreground" />
                 </div>
               }
             />
             <FeatureCard
-              title="Multi-env Ready"
-              description="Define configurations for @dev, @prod, and custom environments with zero duplication."
+              title="Lightning Fast"
+              description="Zero-runtime overhead with compile-time validation and optimization."
               icon={
-                <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
-                  <span className="text-2xl">⚙️</span>
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
+                  <Zap className="h-6 w-6 text-foreground" />
                 </div>
               }
             />
@@ -250,10 +261,64 @@ payment_api_key:env $ENV(STRIPE_API_KEY)`;
         </div>
       </section>
 
+      {/* Key Features */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">
+                Environment-Aware Configuration
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                Define configurations for different environments with zero duplication. 
+                Meta-Lang automatically merges common settings with environment-specific overrides.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-secondary flex items-center justify-center mt-1">
+                    <div className="h-2 w-2 rounded-full bg-foreground"></div>
+                  </div>
+                  <span className="ml-3 text-foreground">Multi-environment support (@dev, @prod, @staging)</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-secondary flex items-center justify-center mt-1">
+                    <div className="h-2 w-2 rounded-full bg-foreground"></div>
+                  </div>
+                  <span className="ml-3 text-foreground">Automatic environment detection</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-secondary flex items-center justify-center mt-1">
+                    <div className="h-2 w-2 rounded-full bg-foreground"></div>
+                  </div>
+                  <span className="ml-3 text-foreground">Zero-config deployment</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-6">
+              <pre className="text-sm text-muted-foreground">
+{`# Define common settings
+@common
+app_name:string MyApp
+debug:bool false
+
+# Override for development
+@env dev
+debug:bool true
+port:int 3000
+
+# Override for production
+@env prod
+port:int 8080`}
+              </pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Coming Soon Banner */}
       <section className="py-20 px-6 border-t border-border">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-card border border-border rounded-lg p-12">
+          <div className="bg-card border border-border rounded-2xl p-12 shadow-xl">
             <Mail className="h-12 w-12 mx-auto mb-6 text-muted-foreground" />
             <h2 className="text-2xl font-bold mb-4">
               Be first to try meta-lang
@@ -300,22 +365,22 @@ payment_api_key:env $ENV(STRIPE_API_KEY)`;
               <h4 className="font-semibold mb-4 text-foreground">Product</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Documentation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Features
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Examples
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -323,16 +388,16 @@ payment_api_key:env $ENV(STRIPE_API_KEY)`;
               <h4 className="font-semibold mb-4 text-foreground">Resources</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Know Meta
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Language Support
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="https://github.com/ashavijit/meta" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">

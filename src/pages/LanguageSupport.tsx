@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Code, CheckCircle, Clock, ExternalLink, Github, Twitter, ChevronRight, Send } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 
@@ -166,22 +167,22 @@ const LanguageSupport = () => {
               <h4 className="font-semibold mb-4 text-foreground">Product</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Features
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Examples
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -189,16 +190,16 @@ const LanguageSupport = () => {
               <h4 className="font-semibold mb-4 text-foreground">Resources</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Documentation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Know Meta
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="https://github.com/ashavijit/meta" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">

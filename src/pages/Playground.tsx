@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Copy, Check, Download, Upload, FileText, Github, Twitter, ChevronRight, Send, FileJson, FileCode } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
@@ -477,22 +478,22 @@ const Playground = () => {
               <h4 className="font-semibold mb-4 text-foreground">Product</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Features
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Examples
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -500,22 +501,22 @@ const Playground = () => {
               <h4 className="font-semibold mb-4 text-foreground">Resources</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Documentation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Know Meta
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Language Support
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

@@ -1,4 +1,5 @@
-import { Github, Twitter, ChevronRight, Send } from "lucide-react";
+import { Github, Twitter, ChevronRight, Send, Zap, Rocket, TestTube } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import FeatureCard from "@/components/FeatureCard";
@@ -10,6 +11,7 @@ const Features = () => {
       status: "In Progress",
       statusColor: "bg-status-degraded",
       description: "Core functionality currently under development",
+      icon: <Zap className="h-5 w-5" />,
       items: [
         {
           name: ".meta Parser Engine",
@@ -46,6 +48,7 @@ const Features = () => {
       status: "Planned",
       statusColor: "bg-grey-400",
       description: "Next phase of development starting Q2 2025",
+      icon: <Rocket className="h-5 w-5" />,
       items: [
         {
           name: "Web Dashboard",
@@ -78,6 +81,7 @@ const Features = () => {
       status: "Researching",
       statusColor: "bg-grey-500",
       description: "Future possibilities being explored",
+      icon: <TestTube className="h-5 w-5" />,
       items: [
         {
           name: "AI-Powered Validation",
@@ -110,6 +114,10 @@ const Features = () => {
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 fade-in">
+            <div className="inline-flex items-center justify-center px-4 py-1 text-sm bg-card border border-border rounded-full mb-6">
+              <Rocket className="h-4 w-4 mr-2 text-accent" />
+              <span className="text-foreground">Roadmap</span>
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Feature Roadmap</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Track what we&apos;re building and what&apos;s coming next. Meta-Lang is evolving to become the standard for configuration management.
@@ -121,7 +129,12 @@ const Features = () => {
               <div key={idx} className="fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
                 <div className="mb-10 pb-4 border-b border-border">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-                    <h2 className="text-3xl font-bold">{group.category}</h2>
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-card border border-border rounded-lg">
+                        {group.icon}
+                      </div>
+                      <h2 className="text-3xl font-bold">{group.category}</h2>
+                    </div>
                     <div className="flex items-center gap-2">
                       <div className={`w-3 h-3 rounded-full ${group.statusColor} pulse-dot`} />
                       <span className="text-sm font-medium text-muted-foreground px-3 py-1 bg-card border border-border rounded-full">
@@ -147,7 +160,7 @@ const Features = () => {
           </div>
 
           <div className="mt-24 space-y-8">
-            <div className="bg-card border border-border rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-card border border-border rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300">
               <h3 className="text-2xl font-bold mb-3">Why These Features?</h3>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed text-lg">
                 Every feature is designed to solve real problems developers face with configuration management. 
@@ -155,7 +168,7 @@ const Features = () => {
               </p>
             </div>
 
-            <div className="bg-card border border-border rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
               <h3 className="text-2xl font-bold mb-6 text-center">Have a Feature Request?</h3>
               <p className="text-muted-foreground text-center mb-8 text-lg">
                 We&apos;re actively listening to the developer community. Share your ideas and vote on features.
@@ -216,22 +229,22 @@ const Features = () => {
               <h4 className="font-semibold mb-4 text-foreground">Product</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Documentation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Examples
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -239,16 +252,16 @@ const Features = () => {
               <h4 className="font-semibold mb-4 text-foreground">Resources</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Know Meta
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Language Support
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="https://github.com/ashavijit/meta" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">

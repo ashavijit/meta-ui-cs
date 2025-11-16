@@ -41,13 +41,13 @@ const Navbar = () => {
     <nav
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-card/90 backdrop-blur-2xl shadow-xl border-border/40"
-          : "bg-card/80 backdrop-blur-xl border-border/30"
-      } border rounded-2xl px-4 py-3 max-w-4xl w-[calc(100%-2rem)]`}
+          ? "bg-card/95 backdrop-blur-2xl shadow-xl border-border/50"
+          : "bg-card/90 backdrop-blur-xl border-border/40"
+      } border rounded-2xl px-4 py-3 max-w-5xl w-[calc(100%-2rem)]`}
     >
       <div className="flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
-          <span className="text-lg font-bold tracking-tight text-foreground">
+          <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
             meta-lang
           </span>
         </Link>
@@ -74,9 +74,9 @@ const Navbar = () => {
             <Button
               variant="outline"
               size="sm"
-              className="rounded-xl text-sm font-medium border-border hover:bg-muted hover:border-border transition-all duration-300"
+              className="rounded-xl text-sm font-medium border-border hover:bg-muted hover:border-border transition-all duration-300 gap-2"
             >
-              <Github className="h-4 w-4 mr-2" />
+              <Github className="h-4 w-4" />
               GitHub
             </Button>
           </a>
@@ -129,7 +129,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 mt-3 py-4 border border-border/40 rounded-2xl bg-card/95 backdrop-blur-2xl shadow-xl">
+        <div className="md:hidden absolute top-full left-0 right-0 mt-3 py-4 border border-border/50 rounded-2xl bg-card/95 backdrop-blur-2xl shadow-xl">
           <div className="flex flex-col space-y-1 px-3">
             {navItems.map((item) => (
               <Link 
@@ -160,9 +160,9 @@ const Navbar = () => {
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full justify-start rounded-xl text-sm font-medium my-1 border-border hover:bg-muted hover:border-border"
+                className="w-full justify-start rounded-xl text-sm font-medium my-1 border-border hover:bg-muted hover:border-border gap-2"
               >
-                <Github className="h-4 w-4 mr-2" />
+                <Github className="h-4 w-4" />
                 GitHub
               </Button>
             </a>

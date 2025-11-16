@@ -83,22 +83,22 @@ const NotFound = () => {
               <h4 className="font-semibold mb-4 text-foreground">Product</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Features
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Examples
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -106,22 +106,22 @@ const NotFound = () => {
               <h4 className="font-semibold mb-4 text-foreground">Resources</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Documentation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Know Meta
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Language Support
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

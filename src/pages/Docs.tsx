@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { BookOpen, Mail, Github, Twitter, ChevronRight, Send } from "lucide-react";
+import { BookOpen, Mail, Github, Twitter, ChevronRight, Send, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
@@ -27,12 +28,13 @@ const Docs = () => {
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <div className="fade-in">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-card border border-border mb-6">
-              <BookOpen className="h-8 w-8 text-foreground" />
+            <div className="inline-flex items-center justify-center px-4 py-1 text-sm bg-card border border-border rounded-full mb-6">
+              <Sparkles className="h-4 w-4 mr-2 text-accent" />
+              <span className="text-foreground">Coming Soon</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Documentation</h1>
             <p className="text-xl text-muted-foreground mb-4">
-              Coming Soon
+              Comprehensive guides and API references
             </p>
             <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
               We're working hard to create comprehensive documentation for Meta-Lang. 
@@ -56,7 +58,7 @@ const Docs = () => {
             </form>
           </div>
 
-          <div className="bg-card border border-border rounded-xl p-8 max-w-2xl mx-auto">
+          <div className="bg-card border border-border rounded-2xl p-8 max-w-2xl mx-auto shadow-xl">
             <h2 className="text-2xl font-bold mb-4">What to Expect</h2>
             <div className="grid md:grid-cols-2 gap-6 text-left">
               <div>
@@ -111,22 +113,22 @@ const Docs = () => {
               <h4 className="font-semibold mb-4 text-foreground">Product</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Features
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/examples" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Examples
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -134,16 +136,16 @@ const Docs = () => {
               <h4 className="font-semibold mb-4 text-foreground">Resources</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Know Meta
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Language Support
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="https://github.com/ashavijit/meta" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">

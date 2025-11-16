@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Code, Copy, Check, Github, Twitter, ChevronRight, Send } from "lucide-react";
+import { Code, Copy, Check, Github, Twitter, ChevronRight, Send, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
@@ -204,10 +205,11 @@ cache_password:env $ENV(REDIS_PASS_PROD)`;
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 fade-in">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-card border border-border mb-6">
-              <Code className="h-8 w-8 text-foreground" />
+            <div className="inline-flex items-center justify-center px-4 py-1 text-sm bg-card border border-border rounded-full mb-6">
+              <Sparkles className="h-4 w-4 mr-2 text-accent" />
+              <span className="text-foreground">Examples</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Examples</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Code Examples</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               See how Meta-Lang can simplify your configuration management
             </p>
@@ -223,7 +225,7 @@ cache_password:env $ENV(REDIS_PASS_PROD)`;
                 </p>
               </div>
 
-              <div className="bg-card border border-border rounded-xl overflow-hidden">
+              <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-xl">
                 <div className="flex justify-between items-center px-6 py-3 border-b border-border bg-muted/50">
                   <h3 className="font-medium">express-app.js</h3>
                   <Button
@@ -253,7 +255,6 @@ cache_password:env $ENV(REDIS_PASS_PROD)`;
                     codeTagProps={{
                       style: {
                         fontFamily: '"Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
-
                       }
                     }}
                   >
@@ -272,7 +273,7 @@ cache_password:env $ENV(REDIS_PASS_PROD)`;
                 </p>
               </div>
 
-              <div className="bg-card border border-border rounded-xl overflow-hidden">
+              <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-xl">
                 <div className="flex justify-between items-center px-6 py-3 border-b border-border bg-muted/50">
                   <h3 className="font-medium">app.config.meta</h3>
                   <Button
@@ -295,7 +296,7 @@ cache_password:env $ENV(REDIS_PASS_PROD)`;
             </div>
 
             {/* Benefits Section */}
-            <div className="fade-in bg-card border border-border rounded-xl p-8">
+            <div className="fade-in bg-card border border-border rounded-2xl p-8 shadow-xl">
               <h2 className="text-3xl font-bold mb-6 text-center">Why Meta-Lang?</h2>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
@@ -369,22 +370,22 @@ cache_password:env $ENV(REDIS_PASS_PROD)`;
               <h4 className="font-semibold mb-4 text-foreground">Product</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Documentation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Features
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -392,16 +393,16 @@ cache_password:env $ENV(REDIS_PASS_PROD)`;
               <h4 className="font-semibold mb-4 text-foreground">Resources</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/know-meta" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Know Meta
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
+                  <Link to="/language-support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
                     <ChevronRight className="h-4 w-4 mr-2 text-foreground" />
                     Language Support
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="https://github.com/ashavijit/meta" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center">
